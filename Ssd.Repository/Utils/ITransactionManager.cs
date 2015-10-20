@@ -4,6 +4,6 @@ namespace Ssd.Repository.Utils
 {
     public interface ITransactionManager
     {
-        void RunInTransaction(Action action);
+        void RunInTransaction(Action actionToExecute);
     }
 }

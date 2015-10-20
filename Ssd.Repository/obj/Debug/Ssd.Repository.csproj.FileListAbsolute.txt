@@ -1,0 +1,12 @@
+D:\Projects\ssd\Ssd.Repository\bin\Debug\Ssd.Repository.dll
+D:\Projects\ssd\Ssd.Repository\bin\Debug\Ssd.Repository.pdb
+D:\Projects\ssd\Ssd.Repository\bin\Debug\FluentNHibernate.dll
+D:\Projects\ssd\Ssd.Repository\bin\Debug\Iesi.Collections.dll
+D:\Projects\ssd\Ssd.Repository\bin\Debug\NHibernate.dll
+D:\Projects\ssd\Ssd.Repository\bin\Debug\FluentNHibernate.pdb
+D:\Projects\ssd\Ssd.Repository\bin\Debug\FluentNHibernate.xml
+D:\Projects\ssd\Ssd.Repository\bin\Debug\Iesi.Collections.xml
+D:\Projects\ssd\Ssd.Repository\bin\Debug\NHibernate.xml
+D:\Projects\ssd\Ssd.Repository\obj\Debug\Ssd.Repository.csprojResolveAssemblyReference.cache
+D:\Projects\ssd\Ssd.Repository\obj\Debug\Ssd.Repository.dll
+D:\Projects\ssd\Ssd.Repository\obj\Debug\Ssd.Repository.pdb

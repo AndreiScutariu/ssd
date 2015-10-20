@@ -5,12 +5,18 @@ using Ssd.Repository.Utils;
 
 namespace Ssd.Repository.Managers
 {
-    public interface IBaseManager<TEnitity, in TId>
+    public interface IBaseManager<TEnitity, TId>
     {
-        TEnitity Save(TEnitity entity);
+        TId Save(TEnitity entity);
+
         TEnitity Update(TEnitity entity);
+        
         TEnitity Get(TId id);
+
+        TEnitity Load(TId id);
+        
         void Delete(TEnitity entity);
+        
         IList<TEnitity> GetAll();
     }
 
@@ -21,19 +27,19 @@ namespace Ssd.Repository.Managers
             get { return Database.OpenSession(); }
         }
 
-        //TODO refactor this, use ninject + singleton + nested transactions and thread safe
         public ITransactionManager TransactionManager
         {
             get { return new NHiberbateTransactionManager(); }
         }
 
-        public TEnitity Save(TEnitity entity)
+        public TId Save(TEnitity entity)
         {
+            var id = default(TId);
             TransactionManager.RunInTransaction(() =>
             {
-                entity = (TEnitity) Session.Save(entity);
+                id = (TId)Session.Save(entity);
             });
-            return entity;
+            return id;
         }
 
         public TEnitity Update(TEnitity entity)
@@ -48,6 +54,16 @@ namespace Ssd.Repository.Managers
             TransactionManager.RunInTransaction(() =>
             {
                 entity = Session.Get<TEnitity>(id);
+            });
+            return entity;
+        }
+
+        public TEnitity Load(TId id)
+        {
+            var entity = default(TEnitity);
+            TransactionManager.RunInTransaction(() =>
+            {
+                entity = Session.Load<TEnitity>(id);
             });
             return entity;
         }
