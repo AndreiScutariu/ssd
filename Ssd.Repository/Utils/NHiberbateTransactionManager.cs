@@ -5,8 +5,6 @@ namespace Ssd.Repository.Utils
 {
     public class NHiberbateTransactionManager : ITransactionManager
     {
-        private bool _isOpenedTransaction; 
-
         private ISession Session
         {
             get { return Database.OpenSession(); }
@@ -14,16 +12,10 @@ namespace Ssd.Repository.Utils
 
         public void RunInTransaction(Action actionToExecute)
         {
-            if (_isOpenedTransaction)
-            {
-                actionToExecute();
-            }
-
             using (var tx = Session.BeginTransaction())
             {
                 try
                 {
-                    _isOpenedTransaction = true;
                     actionToExecute();
                     tx.Commit();
                 }
@@ -31,10 +23,6 @@ namespace Ssd.Repository.Utils
                 {
                     tx.Rollback();
                     throw;
-                }
-                finally
-                {
-                    _isOpenedTransaction = false;
                 }
             }
         }

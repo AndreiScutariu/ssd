@@ -32,7 +32,7 @@ namespace Ssd.Repository.Managers
             get { return new NHiberbateTransactionManager(); }
         }
 
-        public TId Save(TEnitity entity)
+        public virtual TId Save(TEnitity entity)
         {
             var id = default(TId);
             TransactionManager.RunInTransaction(() =>
@@ -42,13 +42,13 @@ namespace Ssd.Repository.Managers
             return id;
         }
 
-        public TEnitity Update(TEnitity entity)
+        public virtual TEnitity Update(TEnitity entity)
         {
             TransactionManager.RunInTransaction(() => Session.Update(entity));
             return entity;
         }
 
-        public TEnitity Get(TId id)
+        public virtual TEnitity Get(TId id)
         {
             var entity = default(TEnitity);
             TransactionManager.RunInTransaction(() =>
@@ -58,7 +58,7 @@ namespace Ssd.Repository.Managers
             return entity;
         }
 
-        public TEnitity Load(TId id)
+        public virtual TEnitity Load(TId id)
         {
             var entity = default(TEnitity);
             TransactionManager.RunInTransaction(() =>
@@ -68,12 +68,12 @@ namespace Ssd.Repository.Managers
             return entity;
         }
 
-        public void Delete(TEnitity entity)
+        public virtual void Delete(TEnitity entity)
         {
             TransactionManager.RunInTransaction(() => Session.Delete(entity));
         }
 
-        public IList<TEnitity> GetAll()
+        public virtual IList<TEnitity> GetAll()
         {
             IList<TEnitity> list = null;;
             TransactionManager.RunInTransaction(() =>

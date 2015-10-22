@@ -19,7 +19,7 @@ namespace Ssd.Repository.Security.Interceptors
                 propertyInfo.SetValue(entity, StringEncrypter.DoHash((string)value), null);
             }
 
-            return true;
+            return false;
         }
     }
 }
